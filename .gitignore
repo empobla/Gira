@@ -9,6 +9,7 @@ public/images/team/.DS_Store
 /node_modules
 
 .env
+.envOld
 
 public/images/wireframe
 public/stylesheets/test
