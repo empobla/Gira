@@ -87,8 +87,10 @@ exports.loginPost = Passport.authenticate('local', {
  * @param {e.Response} res - Express Response Object
  */
 exports.logout = (req, res) => {
-    req.logout();
-    res.redirect('/inicio');
+    req.logout(error => {
+        if (error) console.error(error);
+        res.redirect('/inicio');
+    });
 };
 
 /**
