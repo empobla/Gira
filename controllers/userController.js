@@ -68,6 +68,7 @@ exports.signUpPost = (validationErrors, req, res, next) => {
  * @param {e.Response} res - Express Response Object
  */
 exports.loginGet = (req, res) => {
+    if (req.user) return res.redirect('/usuarios');
     res.render('users/login', { title: 'Gira: Log In' });
 };
 
@@ -128,7 +129,8 @@ exports.sendVerificationEmail = async (req, res, next) => {
 
         // Sign JWT email token with user id and concatenate it into a URL
         const emailToken = jwt.sign({ user: user._id }, process.env.EMAIL_SECRET, { expiresIn: '24h' });
-        const url = `https://mexicogira.com/v/${emailToken}`;
+        // const url = `https://mexicogira.com/v/${emailToken}`;
+        const url = `http://localhost:3000/v/${emailToken}`;
 
         // Create/Update verificationEmail SES email template
         // const vJSON = require('../emails/verification.json');
@@ -141,10 +143,12 @@ exports.sendVerificationEmail = async (req, res, next) => {
             Destination: {
                 ToAddresses: [`${user.email}`]
             },
-            Source: 'Gira Notificaciones <no-reply@mexicogira.com>',
+            // Source: 'Gira Notificaciones <no-reply@mexicogira.com>',
+            Source: 'Gira Notificaciones <empobla@gmail.com>',
             Template: 'verificationEmail',
             TemplateData: `{ \"name\":\"${user.first_name} ${user.last_name}\",\"link\":\"${url}\" }`,
-            ReturnPath: "returned@mexicogira.com"
+            // ReturnPath: "returned@mexicogira.com"
+            ReturnPath: "empobla@gmail.com"
         };
 
         // Send email to user through SES

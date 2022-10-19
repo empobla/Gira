@@ -139,7 +139,8 @@ exports.passwordRequestPost = async (validationErrors, req, res, next) => {
 
         // Sign JWT email token with user id and concatenate it into a URL
         const emailToken = jwt.sign({ user: user._id }, process.env.EMAIL_SECRET, { expiresIn: '3h' });
-        const url = `https://mexicogira.com/pwr/${emailToken}`;
+        // const url = `https://mexicogira.com/pwr/${emailToken}`;
+        const url = `http://localhost:3000/pwr/${emailToken}`;
         
         // Create/Update passwordReset SES email template
         // const rJSON = require('../emails/pwReset.json');
@@ -152,10 +153,12 @@ exports.passwordRequestPost = async (validationErrors, req, res, next) => {
             Destination: {
                 ToAddresses: [`${user.email}`]
             },
-            Source: 'Gira Notificaciones <no-reply@mexicogira.com>',
+            // Source: 'Gira Notificaciones <no-reply@mexicogira.com>',
+            Source: 'Gira Notificaciones <empobla@gmail.com>',
             Template: 'passwordReset',
             TemplateData: `{ \"name\":\"${user.first_name} ${user.last_name}\",\"link\":\"${url}\" }`,
-            ReturnPath: "returned@mexicogira.com"
+            // ReturnPath: "returned@mexicogira.com"
+            ReturnPath: "empobla@gmail.com"
         };
 
         // Send email to user through SES
@@ -238,10 +241,12 @@ exports.passwordResetPost = async (validationErrors, req, res, next) => {
             Destination: {
                 ToAddresses: [`${user.email}`]
             },
-            Source: 'Gira Notificaciones <no-reply@mexicogira.com>',
+            // Source: 'Gira Notificaciones <no-reply@mexicogira.com>',
+            Source: 'Gira Notificaciones <empobla@gmail.com>',
             Template: 'passwordResetConfirmation',
             TemplateData: `{ \"name\":\"${user.first_name} ${user.last_name}\" }`,
-            ReturnPath: "returned@mexicogira.com"
+            // ReturnPath: "returned@mexicogira.com"
+            ReturnPath: "empobla@gmail.com"
         };
 
         // Send email to user through SES

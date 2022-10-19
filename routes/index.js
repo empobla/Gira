@@ -28,7 +28,7 @@ router.get('/unete', userController.signUpGet);
 router.post('/unete',
   validationController.signupVS,
   userController.signUpPost,
-  // userController.sendVerificationEmail,
+  userController.sendVerificationEmail,
   userController.loginPost
 );
 

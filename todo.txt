@@ -109,7 +109,7 @@ https://aritic.com/blog/aritic-mail/best-practices-to-handle-password-reset-emai
     X CRUD Eventos
     * Registro a eventos
 3. Subir articulos y Noticias
-4. login
+X. login
 5.
     * Paypal API
     * Friends/Chat
