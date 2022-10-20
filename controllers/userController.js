@@ -132,7 +132,8 @@ exports.sendVerificationEmail = async (req, res, next) => {
         // Sign JWT email token with user id and concatenate it into a URL
         const emailToken = jwt.sign({ user: user._id }, process.env.EMAIL_SECRET, { expiresIn: '24h' });
         // const url = `https://mexicogira.com/v/${emailToken}`;
-        const url = `http://localhost:3000/v/${emailToken}`;
+        // const url = `http://localhost:3000/v/${emailToken}`;
+        const url = `http://gira-env.eba-rtfjikie.us-east-1.elasticbeanstalk.com/v/${emailToken}`;
 
         // Create/Update verificationEmail SES email template
         // const vJSON = require('../emails/verification.json');
@@ -314,17 +315,20 @@ exports.accountPost = async (validationErrors, req, res, next) => {
         async function sendVerificationEmail(id, email, first_name, last_name) {
             // Sign JWT email token with user id and concatenate it into a URL
             const emailToken = jwt.sign({ user: id }, process.env.EMAIL_SECRET, { expiresIn: '24h' });
-            const url = `https://mexicogira.com/v/${emailToken}`;
+            // const url = `https://mexicogira.com/v/${emailToken}`;
+            const url = `http://gira-env.eba-rtfjikie.us-east-1.elasticbeanstalk.com/v/${emailToken}`;
 
             // Build SES params object for sending email to the user
             const params = {
                 Destination: {
                     ToAddresses: [`${email}`]
                 },
-                Source: 'Gira Notificaciones <no-reply@mexicogira.com>',
+                // Source: 'Gira Notificaciones <no-reply@mexicogira.com>',
+                Source: 'Gira Notificaciones <empobla@gmail.com>',
                 Template: 'verificationEmail',
                 TemplateData: `{ \"name\":\"${first_name} ${last_name}\",\"link\":\"${url}\" }`,
-                ReturnPath: "returned@mexicogira.com"
+                // ReturnPath: "returned@mexicogira.com"
+                ReturnPath: "empobla@gmail.com"
             };
 
             // Send email to user through SES

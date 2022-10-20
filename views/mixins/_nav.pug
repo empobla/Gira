@@ -18,8 +18,11 @@ mixin nav(fade=false)
         a.menu__item--mobile(href='/inicio#eventos') EVENTOS
         a.menu__item--mobile(href='/inicio#galeria') GALERÍA
         //- a.menu__item--mobile(href='#') CONTACTANOS
-        a.menu__item--mobile(href='/unete') ÚNETE
-        a.menu__item--mobile(href='/login') LOG IN
+        if user 
+            a.menu__item--mobile(href='/logout') CERRAR SESION
+        else
+            a.menu__item--mobile(href='/unete') ÚNETE
+            a.menu__item--mobile(href='/login') LOG IN
         p.close--mobile(onclick='closeMobileSlideMenu()') X
 
     - const desktopClass = fade ? 'side side--hidden side--home' : 'side side--home';
@@ -40,8 +43,11 @@ mixin nav(fade=false)
         a.menu__item(href='/inicio#eventos') EVENTOS
         a.menu__item(href='/inicio#galeria') GALERÍA
         //- a.menu__item(href='#') CONTACTANOS
-        a.menu__item(href='/unete') ÚNETE
-        a.menu__item(href='/login') LOG IN
+        if user
+            a.menu__item(href='/logout') CERRAR SESION
+        else
+            a.menu__item(href='/unete') ÚNETE
+            a.menu__item(href='/login') LOG IN
 
     if fade
         script.

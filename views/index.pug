@@ -9,8 +9,11 @@ block content
         .divider--first__layout
             .divider--first__logo(onclick='openSlideMenu(); openMobileSlideMenu()')
             .divider--first__userbuttons
-                a.button.button--wide(href='/login') LOG IN
-                a.button.button--wide(href='/unete') ÚNETE
+                if user
+                    a.button.button--wide(href='/logout') CERRAR SESION
+                else
+                    a.button.button--wide(href='/login') LOG IN
+                    a.button.button--wide(href='/unete') ÚNETE
         .pyramid-grid
             a(href='#call-to-action').pyramid-grid__square
                 .pyramid-grid__content

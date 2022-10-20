@@ -140,7 +140,8 @@ exports.passwordRequestPost = async (validationErrors, req, res, next) => {
         // Sign JWT email token with user id and concatenate it into a URL
         const emailToken = jwt.sign({ user: user._id }, process.env.EMAIL_SECRET, { expiresIn: '3h' });
         // const url = `https://mexicogira.com/pwr/${emailToken}`;
-        const url = `http://localhost:3000/pwr/${emailToken}`;
+        // const url = `http://localhost:3000/pwr/${emailToken}`;
+        const url = `http://gira-env.eba-rtfjikie.us-east-1.elasticbeanstalk.com/pwr/${emailToken}`;
         
         // Create/Update passwordReset SES email template
         // const rJSON = require('../emails/pwReset.json');
