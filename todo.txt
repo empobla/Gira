@@ -107,7 +107,7 @@ https://aritic.com/blog/aritic-mail/best-practices-to-handle-password-reset-emai
 1. Notificaciones de eventos
 2. CRUD eventos (registro tambien)
     X CRUD Eventos
-    * Registro a eventos
+    X Registro a eventos
 3. Subir articulos y Noticias
 X. login
 5.

@@ -9,6 +9,46 @@ block content
         +dashboardHeader({ selected: 0 })
 
         .dashboard-content
-            .dashboard-content__message
-                p.dashboard-content__message-header ¡Aún no te has registrado a eventos!
-                p.dashboard-content__message-text Vuelve a revisar esta página cuando te registres a uno.
+            if events && events.length
+                table.event-table.event-table--desktop
+                    thead
+                        tr
+                            th DESCRIPCIÓN
+                            th FECHA
+                            th EXPOSITOR
+                    tbody
+                        each event, count in events
+                            - const eventUri = encodeURI(event.name.toLowerCase());
+                            - const eventDesc = event.description.length > 254 ? event.description.substring(0, 253).trim() + '...' : event.description;
+                            - const eventDate = new Date(event.date);
+                            - const dateString = `${String(eventDate.getDate()).padStart(2, '0')}/${String(eventDate.getMonth() + 1).padStart(2, '0')}/${eventDate.getFullYear()}`;
+
+                            tr(class='event-table__clickable' data-href=`/eventos/${eventUri}`)
+                                td
+                                    h3= event.name.toUpperCase()
+                                    p.event-table__description= eventDesc
+                                td= dateString
+                                td= event.exhibitor.toUpperCase()
+
+                table.event-table.event-table--mobile
+                    tbody
+                        each event, count in events
+                            - const eventUri = encodeURI(event.name.toLowerCase());
+                            - const eventDesc = event.description.length > 254 ? event.description.substring(0, 253).trim() + '...' : event.description;
+                            - const eventDate = new Date(event.date);
+                            - const dateString = `${String(eventDate.getDate()).padStart(2, '0')}/${String(eventDate.getMonth() + 1).padStart(2, '0')}/${eventDate.getFullYear()}`;
+
+                            tr(class='event-table__clickable' data-href=`/eventos/${eventUri}`)
+                                td
+                                    h3= event.name.toUpperCase()
+                                    p.event-table__description= eventDesc
+                                    p= dateString
+                                    p= event.exhibitor.toUpperCase()
+            else
+                .dashboard-content__message
+                    p.dashboard-content__message-header ¡Aún no te has registrado a eventos!
+                    p.dashboard-content__message-text Vuelve a revisar esta página cuando te registres a uno.
+
+    script(src='/javascripts/common.js')
+    script.
+        document.addEventListener('DOMContentLoaded', _ => setupEventTable());

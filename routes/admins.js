@@ -18,6 +18,9 @@ router.get('/*', adminController.isAuth);
 // Registered Events
 router.get('/miseventos', userController.misEventos);
 
+// Register into Event
+router.get('/registro/:eventId', userController.registroEvento);
+
 // Mailing List
 router.get('/mailing-list', adminController.mailingListGet);
 

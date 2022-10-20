@@ -213,11 +213,29 @@ exports.verify = async (req, res, next) => {
  * @todo Query for user registered events and display them sorted descending by date. Pass events to myevents Pug view
  * @todo Update myevents Pug view to have registered events functionality
  */
-exports.misEventos = (req, res) => {
-    // Render 'Site under construction' Page
-    // res.render('users/construction', { title: 'Gira: Cuenta' });
+exports.misEventos = async (req, res, next) => {
+    try {
+        // Render 'Site under construction' Page
+        // res.render('users/construction', { title: 'Gira: Cuenta' });
+        
+        const events = await Event.find({ _id: { $in: req.user.events } }, { _id: 1, name: 1, date: 1, exhibitor: 1, description: 1 }).sort({ date: -1 });
+        res.render('users/myevents', { title: 'Gira: Cuenta', events });
+    } catch(error) {
+        next(error);
+    }
+};
 
-    res.render('users/myevents', { title: 'Gira: Cuenta' });
+exports.registroEvento = async (req, res, next) => {
+    try {
+        const eventId = req.params.eventId;
+        await Promise.all([
+            User.findByIdAndUpdate(req.user._id, { $push: { events: eventId } }, { new: true }),
+            Event.findByIdAndUpdate(eventId, { $push: { registered_users: req.user._id } }, { new: true })
+        ]);
+        res.redirect('/usuarios');
+    } catch(error) {
+        next(error);
+    }
 };
 
 

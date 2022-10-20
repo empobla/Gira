@@ -54,6 +54,8 @@ block content
 
         .margin--5p
         .button--aligncenter#event-view
+            if user && !user.events.includes(event._id)
+                a.button(style='margin-right: 1em;' href=`/${user.permissions === 'user' ? 'usuarios' : 'admin'}/registro/${event._id}`) REGÍSTRATE
             a.button(href='/eventos') REGRESAR
         .margin--5p
 

@@ -19,6 +19,9 @@ router.get('/*', userController.isAuth);
 // Registered Events
 router.get('/miseventos', userController.misEventos);
 
+// Register into Event
+router.get('/registro/:eventId', userController.registroEvento);
+
 // Account Info
 router.get('/cuenta', userController.accountGet);
 router.post('/cuenta', validationController.editAccountVS, userController.accountPost);

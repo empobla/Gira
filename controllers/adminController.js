@@ -371,7 +371,12 @@ exports.deleteEventPost = async (req, res, next) => {
         });
 
         // Delete event from database
-        await Event.findByIdAndRemove(req.body.deleteId);
+        const users = await User.find({ events: req.body.deleteId }, { _id: 1 });
+        
+        await Promise.all([
+            ...users.map(_id => User.findByIdAndUpdate(_id, { $pull: { events: req.body.deleteId } }, { new: true })), 
+            Event.findByIdAndRemove(req.body.deleteId)
+        ]);
         
         res.redirect('/admin/eventos');
     } catch(error) {
