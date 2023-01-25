@@ -54,7 +54,6 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li><a href="#abilities-mastered">Abilities Mastered</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -63,6 +62,7 @@
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#abilities-mastered">Abilities Mastered</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -94,27 +94,6 @@ Gira is a fullstack website created for a college club that exists in several un
 
 
 
-<!-- ABILITIES MASTERED -->
-## Abilities Mastered
-
-- Re-creation of an Adobe Photoshop and Adobe Illustrator design for this website with CSS (front-end)
-- Usage of .svg files with CSS to dynamically change their color on events
-- AWS
-    - Elastic Beanstalk
-    - Route 53
-    - ACM
-    - Simple Email Service
-    - WorkMail
-    - S3
-- Email Domains
-- CSS Animations
-- Mailing Lists
-- PayPal API
-- User Registration with Email Confirmation
-- User Password Reset Emails
-- User Transactional Emails
-- JSON Web Tokens
-- JSDoc
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -182,6 +161,32 @@ This project requires Node.js, MongoDB, and several AWS Services. A MongoDB serv
     - [x] Media upload
 - [ ] SEO
 - [x] Documentation
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ABILITIES MASTERED -->
+## Abilities Mastered
+
+- Re-creation of an Adobe Photoshop and Adobe Illustrator design for this website with CSS (front-end)
+- Usage of .svg files with CSS to dynamically change their color on events
+- AWS
+    - Elastic Beanstalk
+    - Route 53
+    - ACM
+    - Simple Email Service
+    - WorkMail
+    - S3
+- Email Domains
+- CSS Animations
+- Mailing Lists
+- PayPal API
+- User Registration with Email Confirmation
+- User Password Reset Emails
+- User Transactional Emails
+- JSON Web Tokens
+- JSDoc
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
