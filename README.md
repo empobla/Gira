@@ -122,24 +122,24 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This project requires Node.js, MongoDB, and several AWS Services. A MongoDB server must be set up locally or in the cloud before using this project, and an AWS IAM account must be setup in AWS with access keys and permissions to use AWS SES and AWS S3.
-* To install npm:
+* Install npm:
   ```sh
   npm install npm@latest -g
   ```
+* Install [MongoDB Community Server][MongoDB-community-url] or set up [MongoDB Atlas][MongoDB-atlas-url]. Instructions for MongoDB Community Server can be found [here][MongoDB-instructions-url].
+* Setup an AWS IAM account with access keys and permissions to use AWS SES and AWS S3. Instructions can be found [here][IAM-instructions-url].
 
 ### Installation
 
-1. Install [MongoDB Community Server][MongoDB-community-url] or set up [MongoDB Atlas][MongoDB-atlas-url]. Instructions for MongoDB Community Server can be found [here][MongoDB-instructions-url].
-2. Setup an AWS IAM account with access keys and permissions to use AWS SES and AWS S3. Instructions can be found [here][IAM-instructions-url].
-3. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/empobla/Gira.git
    ```
-4. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-5. In the project's directory, create a `.env` file with the following keys:
+3. In the project's directory, create a `.env` file with the following keys:
   ```text
   DB=<MONGODB_URI>
 
@@ -152,7 +152,7 @@ This project requires Node.js, MongoDB, and several AWS Services. A MongoDB serv
   ```
   _Note: Replace everything in between `<>` with your actual keys, and create a secret and email secret key._
 
-6. Start the server in development mode!
+4. Start the server in development mode!
   ```sh
   npm run devstart
   ```
