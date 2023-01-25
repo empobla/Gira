@@ -83,11 +83,7 @@ Gira is a fullstack website created for a college club that exists in several un
 
 ### Built With
 
-* [![MongoDB][MongoDB]][Mongo-url]
-* [![Express][Express.js]][Express-url]
-* [![Pug][Pug.js]][Pug-url]
-* [![Node][Node.js]][Node-url]
-* [![AWS][AWS]][AWS-url]
+[![MongoDB][MongoDB]][Mongo-url][![Express][Express.js]][Express-url][![Pug][Pug.js]][Pug-url][![Node][Node.js]][Node-url][![AWS][AWS]][AWS-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
